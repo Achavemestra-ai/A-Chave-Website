@@ -1,0 +1,7 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home7/achav0514225/public_html
+    - /bin/rm -rf $DEPLOYPATH/*
+    - /bin/npm ci --prefix /home7/achav0514225/repositories/a-chave-website
+    - /bin/npm run build --prefix /home7/achav0514225/repositories/a-chave-website
+    - /bin/cp -R /home7/achav0514225/repositories/a-chave-website/dist/* $DEPLOYPATH/
