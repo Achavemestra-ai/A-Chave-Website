@@ -22,31 +22,28 @@ export const Hero = () => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Central triangle */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div
+          <div 
             className="w-0 h-0 border-l-[40px] border-r-[40px] border-b-[60px] border-l-transparent border-r-transparent"
             style={{ borderBottomColor: '#ec4899' }}
           />
         </div>
 
-        {/* Orbital rings - increased size */}
+        {/* Orbital rings */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-80 h-80 border border-pink-500/20 rounded-full animate-spin" style={{ animationDuration: '20s' }}>
             <div className="w-3 h-3 bg-pink-500 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
           </div>
         </div>
-
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-96 h-96 border border-orange-400/15 rounded-full animate-spin" style={{ animationDuration: '30s' }}>
             <div className="w-2.5 h-2.5 bg-orange-400 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
           </div>
         </div>
-
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-[28rem] h-[28rem] border border-pink-300/10 rounded-full animate-spin" style={{ animationDuration: '40s' }}>
             <div className="w-2 h-2 bg-pink-300 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
           </div>
         </div>
-
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-[32rem] h-[32rem] border border-orange-200/8 rounded-full animate-spin" style={{ animationDuration: '50s' }}>
             <div className="w-1.5 h-1.5 bg-orange-200 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
@@ -58,7 +55,7 @@ export const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight">
             Tenha um time feito{" "}
-            <span
+            <span 
               className="font-bold"
               style={{
                 background: 'linear-gradient(-45deg, #ec4899, #a855f7, #f97316)',
@@ -94,12 +91,11 @@ export const Hero = () => {
               Chegou o momento de virar A Chave da sua empresa para novos horizontes
             </p>
 
-            {/* CTA otimizado para mobile: largura total, padding/fonte confortáveis, quebra de linha */}
-            <Button
+            <Button 
               onClick={scrollToForm}
-              size="lg"
+              size="lg" 
               className="
-                w-full sm:w-auto max-w-[420px] mx-auto
+                w-full sm:w-auto max-w-[420px] min-w-[240px] mx-auto
                 px-6 sm:px-12 py-4 sm:py-6
                 text-lg sm:text-xl font-bold
                 whitespace-normal text-center leading-snug
@@ -113,7 +109,7 @@ export const Hero = () => {
                 backgroundSize: '400% 400%',
                 animation: 'gradientShift 8s ease-in-out infinite',
                 color: '#ffffff',
-                boxShadow: '0 8px 30px rgba(236, 72, 153, 0.35)',
+                boxShadow: '0 8px 30px rgba(236, 72, 153, 0.35)'
               }}
             >
               QUERO MAIS INFORMAÇÕES

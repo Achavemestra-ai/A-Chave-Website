@@ -28,7 +28,7 @@ export const CTA = () => {
           </h2>
 
           <p className="text-lg md:text-xl opacity-90 mb-12 leading-relaxed">
-            Agende uma consultoria gratuita com nossos especialistas e descubra
+            Agende uma consultoria com nossos especialistas e descubra
             como a Chave pode revolucionar a gestão da sua empresa através do
             Business Intelligence.
           </p>
@@ -53,7 +53,7 @@ export const CTA = () => {
               onClick={scrollToForm}
               size="lg"
               className="
-                w-full sm:w-auto max-w-[420px]
+                w-full sm:w-auto max-w-[420px] min-w-[240px]
                 px-6 sm:px-8 py-4 sm:py-5
                 text-lg font-semibold
                 whitespace-normal text-center leading-snug
@@ -71,7 +71,7 @@ export const CTA = () => {
                 boxShadow: "0 8px 30px rgba(236, 72, 153, 0.35)",
               }}
             >
-              Agendar Consultoria Gratuita
+              Agendar Consultoria
               <ArrowRight className="ml-2 hidden sm:inline" />
             </Button>
 
@@ -79,7 +79,7 @@ export const CTA = () => {
               size="lg"
               variant="outline"
               className="
-                w-full sm:w-auto max-w-[420px]
+                w-full sm:w-auto max-w-[420px] min-w-[240px]
                 px-6 sm:px-8 py-4 sm:py-5
                 text-lg font-semibold
                 border-2 border-white
