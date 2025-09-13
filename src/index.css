@@ -37,19 +37,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -100,4 +93,34 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ------------------------------
+   Ajustes globais para mobile
+   ------------------------------ */
+
+/* Evita “corte”/scroll horizontal */
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Congruência de box model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Mídia responsiva: nunca ultrapassar o container */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botões com texto longo: alinhar e quebrar direitinho */
+button,
+a[role="button"] {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+  word-break: keep-all;
 }
