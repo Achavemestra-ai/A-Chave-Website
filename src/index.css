@@ -6,82 +6,97 @@
 
 @layer base {
   :root {
+    /* A Chave Design System - Cores da identidade visual */
+    --chave-pink: 342 96% 48%; /* #F20587 */
+    --chave-yellow-bright: 51 94% 50%; /* #F6C705 */
+    --chave-yellow-gold: 47 92% 49%; /* #F2B705 */
+    --chave-orange-light: 39 94% 49%; /* #F29F05 */
+    --chave-orange-dark: 29 94% 49%; /* #F27405 */
+    --chave-black: 0 0% 5%; /* #0D0D0D */
+    
+    /* Gradientes A Chave */
+    --gradient-primary: linear-gradient(45deg, hsl(var(--chave-pink)), hsl(var(--chave-yellow-bright)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--chave-orange-dark)), hsl(var(--chave-yellow-gold)));
+    --gradient-hero: radial-gradient(circle at center, hsl(var(--chave-pink) / 0.1), transparent 70%);
+    
+    /* Sistema base adaptado para A Chave */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: var(--chave-black);
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: var(--chave-black);
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: var(--chave-black);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--chave-pink);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--chave-yellow-bright);
+    --secondary-foreground: var(--chave-black);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--chave-orange-light);
+    --accent-foreground: var(--chave-black);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: var(--chave-pink);
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-foreground: var(--chave-black);
+    --sidebar-primary: var(--chave-pink);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: var(--chave-black);
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: var(--chave-pink);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: var(--chave-black);
+    --foreground: 0 0% 100%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: var(--chave-pink);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: var(--chave-orange-light);
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: var(--chave-pink);
+    
+    --sidebar-background: var(--chave-black);
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: var(--chave-pink);
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: var(--chave-pink);
   }
 }
 
@@ -92,6 +107,17 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Sora', sans-serif;
+  }
+  
+  /* Tipografia A Chave */
+  .font-morganite {
+    font-family: 'Orbitron', 'Sora', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-sora {
+    font-family: 'Sora', sans-serif;
   }
 }
 

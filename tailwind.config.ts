@@ -61,7 +61,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// A Chave colors
+				chave: {
+					pink: 'hsl(var(--chave-pink))',
+					'yellow-bright': 'hsl(var(--chave-yellow-bright))',
+					'yellow-gold': 'hsl(var(--chave-yellow-gold))',
+					'orange-light': 'hsl(var(--chave-orange-light))',
+					'orange-dark': 'hsl(var(--chave-orange-dark))',
+					black: 'hsl(var(--chave-black))'
 				}
+			},
+			fontFamily: {
+				'morganite': ['Orbitron', 'Sora', 'sans-serif'],
+				'sora': ['Sora', 'sans-serif'],
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)',
+				'gradient-hero': 'var(--gradient-hero)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
