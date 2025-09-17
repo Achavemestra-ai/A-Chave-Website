@@ -1,43 +1,51 @@
-import { useEffect, useState } from "react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-
-const PrivacidadePage = () => {
-  const [content, setContent] = useState<string>("");
-
-  useEffect(() => {
-    fetch("/legal/privacidade.md")
-      .then((response) => response.text())
-      .then((text) => setContent(text))
-      .catch((error) => console.error("Erro ao carregar política:", error));
-  }, []);
-
-  const formatMarkdown = (text: string) => {
-    return text
-      .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-bold mb-6 text-foreground">$1</h1>')
-      .replace(/^## (.+)$/gm, '<h2 class="text-xl font-semibold mt-8 mb-4 text-foreground">$1</h2>')
-      .replace(/^- (.+)$/gm, '<li class="ml-4 mb-2">$1</li>')
-      .replace(/\n\n/g, '</p><p class="mb-4 text-muted-foreground">')
-      .replace(/^(.+)$/gm, '<p class="mb-4 text-muted-foreground">$1</p>')
-      .replace(/<p class="mb-4 text-muted-foreground"><h/g, '<h')
-      .replace(/<\/h1><\/p>/g, '</h1>')
-      .replace(/<\/h2><\/p>/g, '</h2>')
-      .replace(/<p class="mb-4 text-muted-foreground"><li/g, '<ul><li')
-      .replace(/<\/li><\/p>/g, '</li></ul>');
-  };
-
+export default function PrivacidadePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="container mx-auto px-4 py-16">
-        <div 
-          className="max-w-4xl mx-auto prose prose-lg"
-          dangerouslySetInnerHTML={{ __html: formatMarkdown(content) }}
-        />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+    <article className="space-y-6 text-sm leading-relaxed">
+      <p className="text-white/60">Última atualização: 23 de agosto de 2024</p>
 
-export default PrivacidadePage;
+      <h2 className="text-xl font-semibold text-white">1. Coleta de dados</h2>
+      <p className="text-white/85">
+        Coletamos dados pessoais fornecidos voluntariamente (ex.: nome, e-mail, telefone) e dados
+        técnicos coletados automaticamente (ex.: IP, navegação, cookies).
+      </p>
+
+      <h2 className="text-xl font-semibold text-white">2. Uso dos dados</h2>
+      <p className="text-white/85">
+        Utilizamos os dados para atendimento, comunicação, análise de uso, melhoria de serviços e
+        cumprimento de obrigações legais.
+      </p>
+
+      <h2 className="text-xl font-semibold text-white">3. Compartilhamento</h2>
+      <p className="text-white/85">
+        Podemos compartilhar dados com fornecedores/terceiros estritamente necessários para a operação
+        do serviço, respeitando a LGPD.
+      </p>
+
+      <h2 className="text-xl font-semibold text-white">4. Direitos do titular</h2>
+      <ul className="list-disc pl-5 space-y-2 text-white/85">
+        <li>Acesso, correção, exclusão e portabilidade;</li>
+        <li>Revogação de consentimento e oposição;</li>
+        <li>Reclamação à ANPD.</li>
+      </ul>
+
+      <h2 className="text-xl font-semibold text-white">5. Segurança</h2>
+      <p className="text-white/85">
+        Adotamos medidas técnicas e administrativas para proteger seus dados contra acessos não
+        autorizados, perda ou alteração indevida.
+      </p>
+
+      <h2 className="text-xl font-semibold text-white">6. Retenção</h2>
+      <p className="text-white/85">
+        Mantemos os dados pelo tempo necessário ao atendimento das finalidades e exigências legais.
+      </p>
+
+      <h2 className="text-xl font-semibold text-white">7. Contato</h2>
+      <p className="text-white/85">
+        Para exercer seus direitos, fale com nosso DPO pelo e-mail{" "}
+        <a className="underline" href="mailto:contato@achave-ia.com.br">
+          contato@achave-ia.com.br
+        </a>.
+      </p>
+    </article>
+  );
+}
