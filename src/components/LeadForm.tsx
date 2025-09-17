@@ -22,7 +22,7 @@ export const LeadForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Olá! Vim através do site e gostaria de receber uma consultoria gratuita.
+    const message = `Olá! Vim através do site e gostaria de receber uma consultoria.
 
 Meus dados:
 • Nome: ${formData.name}
@@ -89,7 +89,7 @@ Meus dados:
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
           >
-            Preencha o formulário abaixo e receba uma consultoria gratuita personalizada para seu negócio.
+            Preencha o formulário abaixo e receba uma consultoria personalizada para seu negócio.
           </motion.p>
         </div>
 
@@ -204,13 +204,27 @@ Meus dados:
             </div>
 
             {/* Botão */}
-            <Button type="submit" size="lg" className="w-full text-white px-8 py-6 text-lg font-semibold relative overflow-hidden"
+            <Button
+              type="submit"
+              size="lg"
+              className="
+                w-full min-w-[240px]
+                px-6 py-4
+                text-lg font-semibold
+                rounded-xl
+                whitespace-normal text-center leading-snug
+                text-white
+                ring-1 ring-white/30
+                shadow-lg shadow-pink-500/30
+                relative overflow-hidden
+              "
               style={{
                 background: 'linear-gradient(-45deg, #ec4899, #a855f7, #f97316)',
                 backgroundSize: '400% 400%',
                 animation: 'gradientShift 8s ease-in-out infinite'
-              }}>
-              Receber Consultoria Gratuita Agora
+              }}
+            >
+              Receber Consultoria Agora
             </Button>
 
             <p className="text-sm text-gray-600 text-center mt-4">

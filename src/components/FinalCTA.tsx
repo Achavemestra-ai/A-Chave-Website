@@ -45,7 +45,7 @@ export const FinalCTA = () => {
             onClick={scrollToForm}
             size="lg"
             className="
-              w-full sm:w-auto max-w-[420px] mx-auto
+              w-full sm:w-auto max-w-[420px] min-w-[240px] mx-auto
               px-6 sm:px-12 py-4 sm:py-5
               text-lg sm:text-xl font-bold
               whitespace-normal text-center leading-snug
@@ -62,7 +62,7 @@ export const FinalCTA = () => {
               boxShadow: "0 8px 30px rgba(236, 72, 153, 0.35)",
             }}
           >
-            Agendar Consultoria Gratuita Agora
+            Agendar Consultoria Agora
           </Button>
         </div>
       </div>

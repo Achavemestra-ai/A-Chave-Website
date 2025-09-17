@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import TermosPage from "./pages/TermosPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
+import CookiesPage from "./pages/CookiesPage"; // ✅ novo
+import LegalRoute from "@/components/LegalRoute"; // ✅ novo
 
 const queryClient = new QueryClient();
 
@@ -22,11 +24,16 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+
+        {/* Observa o hash (#termos-de-uso, #privacidade, #cookies) e mostra página legal */}
+        <LegalRoute />
+
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/termos" element={<TermosPage />} />
             <Route path="/privacidade" element={<PrivacidadePage />} />
+            <Route path="/cookies" element={<CookiesPage />} /> {/* ✅ novo */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
