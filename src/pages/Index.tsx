@@ -1,7 +1,7 @@
 
 import { Header } from "@/components/Header";
 import { LeadForm } from "@/components/LeadForm";
-import { HeroChave3D } from "@/components/HeroChave3D";
+import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
 import { MarketingFunnel } from "@/components/MarketingFunnel";
 import { Benefits } from "@/components/Benefits";
@@ -19,7 +19,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <HeroChave3D />
+      <Hero />
       <LeadForm />
       <Process />
       <MarketingFunnel />
