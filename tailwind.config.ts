@@ -18,7 +18,22 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'morganite': ['Orbitron', 'sans-serif'], // Using Orbitron as Morganite substitute
+				'sora': ['Sora', 'sans-serif'],
+				'sans': ['Sora', 'system-ui', 'sans-serif'], // Make Sora the default
+			},
 			colors: {
+				// A Chave brand colors
+				'achave-yellow': 'hsl(var(--achave-yellow))',
+				'achave-yellow-gold': 'hsl(var(--achave-yellow-gold))',
+				'achave-orange': 'hsl(var(--achave-orange))',
+				'achave-orange-dark': 'hsl(var(--achave-orange-dark))',
+				'achave-pink': 'hsl(var(--achave-pink))',
+				'achave-black': 'hsl(var(--achave-black))',
+				'achave-dark-bg': 'hsl(var(--achave-dark-bg))',
+				
+				// Shadcn colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -62,6 +77,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)', 
+				'gradient-accent': 'var(--gradient-accent)',
+			},
+			boxShadow: {
+				'brand': 'var(--shadow-brand)',
+				'glow': 'var(--shadow-glow)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

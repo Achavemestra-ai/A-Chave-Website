@@ -2,6 +2,10 @@
 import { Header } from "@/components/Header";
 import { LeadForm } from "@/components/LeadForm";
 import { Hero } from "@/components/Hero";
+import { AIAgencySection } from "@/components/sections/AIAgencySection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { SuccessCasesSection } from "@/components/sections/SuccessCasesSection";
+import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
 import { Process } from "@/components/Process";
 import { MarketingFunnel } from "@/components/MarketingFunnel";
 import { Benefits } from "@/components/Benefits";
@@ -20,16 +24,16 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <AIAgencySection />
       <LeadForm />
+      <ProjectsSection />
+      <SuccessCasesSection />
+      <WhyChooseSection />
       <Process />
-      <MarketingFunnel />
-      <Benefits />
       <Services />
+      <Benefits />
       <About />
       <Testimonials />
-      <Certifications />
-      <Differential />
-      <Adaptability />
       <FAQ />
       <FinalCTA />
       <Footer />

@@ -38,19 +38,14 @@ export const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-foreground hover:text-primary transition-colors">Início</a>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors">Sobre</a>
-            <a href="#servicos" className="text-foreground hover:text-primary transition-colors">Serviços</a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors">Contato</a>
+            <a href="#inicio" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Início</a>
+            <a href="#servicos" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Serviços</a>
+            <a href="#cases" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Cases</a>
+            <a href="#como-funciona" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Como Funciona</a>
+            <a href="#contato" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Contato</a>
             <Button 
               onClick={scrollToForm}
-              style={{
-                background: 'linear-gradient(45deg, #f97316, #a855f7, #ec4899)',
-                backgroundSize: '400% 400%',
-                animation: 'gradientShift 8s ease-in-out infinite',
-                color: 'white',
-                boxShadow: '0 0 20px rgba(251, 191, 36, 0.66)'
-              }}
+              className="bg-gradient-primary hover:opacity-90 text-white font-bold px-6 py-2 rounded-xl shadow-brand"
             >
               Solicitar Consultoria
             </Button>
@@ -67,19 +62,14 @@ export const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-border pt-4">
             <div className="flex flex-col space-y-4">
-              <a href="#inicio" className="text-foreground hover:text-primary transition-colors">Início</a>
-              <a href="#sobre" className="text-foreground hover:text-primary transition-colors">Sobre</a>
-              <a href="#servicos" className="text-foreground hover:text-primary transition-colors">Serviços</a>
-              <a href="#contato" className="text-foreground hover:text-primary transition-colors">Contato</a>
+              <a href="#inicio" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Início</a>
+              <a href="#servicos" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Serviços</a>
+              <a href="#cases" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Cases</a>
+              <a href="#como-funciona" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Como Funciona</a>
+              <a href="#contato" className="font-sora text-foreground hover:text-achave-yellow transition-colors">Contato</a>
               <Button 
                 onClick={scrollToForm}
-                className="w-full text-white"
-                style={{
-                  background: 'linear-gradient(45deg, #f97316, #a855f7, #ec4899)',
-                  backgroundSize: '400% 400%',
-                  animation: 'gradientShift 8s ease-in-out infinite',
-                  boxShadow: '0 0 20px rgba(251, 191, 36, 0.66)'
-                }}
+                className="w-full bg-gradient-primary hover:opacity-90 text-white font-bold rounded-xl shadow-brand"
               >
                 Solicitar Consultoria
               </Button>
