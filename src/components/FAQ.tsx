@@ -6,28 +6,32 @@ export const FAQ = () => {
 
   const faqs = [
     {
-      question: "Qual o tempo de retorno do investimento?",
-      answer: `A verdade nua e crua é que o tempo de retorno varia conforme cada caso específico. Já passaram por A Chave clientes que conseguiram 10x o valor em menos de 2 meses. Por outro lado, já tivemos também clientes que estavam começando quase do zero e precisaram de mais alguns meses para começar a ver resultados.
-
-A garantia mais objetiva que você pode ter é: o crescimento do seu negócio será acelerado.
-
-É isso que realmente importa no fim das contas. Pode ser que você demore 6 meses com A Chave para ter resultados, o que, sem nossa Assessoria de Marketing, poderia levar o dobro do tempo ou até mais.`
+      question: "Como a A Chave pode automatizar meu negócio?",
+      answer: `Desenvolvemos agentes de IA personalizados e automações específicas para sua empresa. Isso inclui chatbots inteligentes para atendimento, sistemas de IA para eliminar processos manuais, integração completa para unificar operações e agentes de vendas que trabalham 24/7. Cada solução é criada sob medida para suas necessidades específicas.`
     },
     {
-      question: "Quanto custa o investimento?",
-      answer: `Qual é o preço do seu sucesso? Quanto dinheiro você precisaria investir para fazer com que sua empresa se tornasse a maior do seu setor? O preço que você paga por adiar o seu crescimento pode ser absurdamente maior do que aquele que você deixou de investir no momento que a melhor oportunidade de crescer bateu na sua porta.
-
-Outro ponto importante é que nosso plano de assessoria também pode se adaptar ao seu contexto atual, permitindo, portanto, que você invista a quantia exata que seu negócio suporta no momento atual.`
+      question: "Quanto tempo leva para implementar uma solução de IA?",
+      answer: `O tempo varia conforme a complexidade da solução. Projetos simples como chatbots podem estar funcionando em 1-2 semanas. Automações mais complexas e integrações completas podem levar de 4-8 semanas. Durante a consultoria gratuita, definimos um cronograma personalizado para seu projeto específico.`
     },
     {
-      question: "O que está incluído na consultoria gratuita?",
-      answer: `A Consultoria Gratuita que você receberá ao preencher o formulário procura te mostrar como a Assessoria de Marketing da Chave se encaixa na sua empresa.
-
-Uma vez implementada, na Assessoria de Marketing da Chave você terá uma equipe preparada para cuidar do marketing da sua empresa, enquanto dentro do squad que vai te atender, você pode solicitar consultorias estratégicas para que você mesmo consiga tomar decisões melhores dentro do seu negócio.`
+      question: "Qual o investimento necessário para começar?",
+      answer: `O investimento varia conforme o escopo do projeto e as necessidades da sua empresa. Temos soluções para diferentes tamanhos de negócio, desde startups até grandes empresas. Na consultoria gratuita, apresentamos opções que se adequam ao seu orçamento atual e objetivos de crescimento.`
     },
     {
-      question: "Vocês fornecem ferramentas?",
-      answer: `Não só uma, mas várias! Na Assessoria você recebe acesso a um pacote de ferramentas chamado 'stack digital'. Com ele, você tem as principais automações usadas no mercado de marketing sem precisar pagar por elas.`
+      question: "Como vocês criam as automações?",
+      answer: `Utilizamos as melhores ferramentas de IA do mercado como ChatGPT, Claude, Gemini, combinadas com plataformas de automação como Make e Zapier. Primeiro mapeamos seus processos atuais, identificamos oportunidades de melhoria e então desenvolvemos soluções personalizadas que se integram perfeitamente ao seu negócio.`
+    },
+    {
+      question: "Como nos comunicamos durante o projeto?",
+      answer: `Mantemos comunicação constante através de reuniões semanais, relatórios de progresso e um canal direto via WhatsApp. Você terá acesso a um gerente de projeto dedicado que acompanha todo o desenvolvimento e tira suas dúvidas em tempo real.`
+    },
+    {
+      question: "E se algo der errado com a automação?",
+      answer: `Oferecemos suporte técnico completo e monitoramento contínuo das automações. Caso ocorra algum problema, nossa equipe técnica resolve rapidamente. Além disso, todas as soluções passam por testes rigorosos antes da implementação final.`
+    },
+    {
+      question: "Preciso de conhecimentos técnicos para usar os sistemas?",
+      answer: `Não! Desenvolvemos interfaces simples e intuitivas para que qualquer pessoa da sua equipe possa usar. Além disso, fornecemos treinamento completo e materiais de apoio para garantir que todos saibam utilizar as automações de forma eficiente.`
     }
   ];
 
@@ -35,8 +39,9 @@ Uma vez implementada, na Assessoria de Marketing da Chave você terá uma equipe
     <section className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-            Confira algumas Perguntas Frequentes
+          <h2 className="font-morganite text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+            Perguntas Frequentes sobre{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent">IA</span>
           </h2>
           
           <div className="space-y-6">

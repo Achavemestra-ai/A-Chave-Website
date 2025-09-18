@@ -127,24 +127,10 @@ export const SuccessCasesSection = () => {
                   </ul>
                 </div>
 
-                <Button 
-                  className="w-full bg-gradient-primary hover:opacity-90 text-white font-semibold"
-                >
-                  Saiba Mais <ChevronRight className="w-4 h-4 ml-2" />
-                </Button>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
-            <Button 
-              onClick={scrollToForm}
-              size="lg"
-              className="bg-gradient-accent hover:opacity-90 text-white font-bold px-12 py-4 rounded-xl shadow-brand"
-            >
-              Quero Ser o Próximo Case de Sucesso
-            </Button>
-          </div>
         </div>
       </div>
     </section>

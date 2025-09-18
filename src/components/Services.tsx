@@ -30,87 +30,46 @@ export const Services = () => {
   const services = [
     {
       icon: Rocket,
-      title: "Tráfego Pago",
-      subtitle: "Mídia Paga",
-      description: "Gestão dos seus anúncios online no Google e Meta",
+      title: "Chatbots Inteligentes",
+      subtitle: "Para Automatizar Atendimento",
+      description: "Agentes de IA que atendem seus clientes 24/7 com conversas naturais e vendas automatizadas",
       features: [
-        "Atraia seus clientes para seu funil de vendas.",
-        "Abasteça seu atendimento com oportunidades de venda",
-        "Tenha mais previsibilidade e mensure o retorno do seu investimento"
-      ],
-      socialIcons: [
-        { icon: Hash, className: "bg-black" },
-        { icon: Linkedin, className: "bg-blue-600" },
-        { icon: Instagram, className: "bg-gradient-to-r from-purple-500 to-pink-500" },
-        { icon: Facebook, className: "bg-blue-600" },
-        { icon: Youtube, className: "bg-red-600" },
-        { icon: X, className: "bg-black" }
-      ]
-    },
-    {
-      icon: Palette,
-      title: "Criativos",
-      subtitle: "",
-      description: "Seus anúncios criados pelos copywriters e designers da Chave",
-      features: [
-        "Mais foco em conversão, não apenas em estética",
-        "Criados com base na experiência de 50 empresas atendidas",
-        "Feitos por profissionais que recebem treinamento constantemente"
-      ]
-    },
-    {
-      icon: FileText,
-      title: "Páginas",
-      subtitle: "Ambientes",
-      description: "Landing pages projetadas para trazer oportunidades de vendas",
-      features: [
-        "Feitas com as melhores práticas do mercado digital",
-        "Fácil de implementar e editar",
-        "Projetadas com as melhores ferramentas do mercado"
-      ]
-    },
-    {
-      icon: LifeBuoy,
-      title: "CRM",
-      subtitle: "",
-      description: "Gerencie o relacionamento com seu cliente em um só lugar",
-      features: [
-        "Visualize todo o seu funil de vendas",
-        "Mantenha conexão com seus clientes e venda mais",
-        "Faça upsell, downsell, crossel e campanhas promocionais"
-      ]
-    },
-    {
-      icon: LifeBuoy,
-      title: "Gestão e Atendimento",
-      subtitle: "",
-      description: "O seu marketing gerenciado por especialistas em growth",
-      features: [
-        "Especialistas treinados, geridos e desenvolvidos por nós.",
-        "Atendimento ágil e eficaz",
-        "A expertise da Chave na sua empresa"
+        "Atendimento inteligente que converte visitantes em leads",
+        "Integração com WhatsApp, Instagram e site",
+        "Qualificação automática de prospects"
       ]
     },
     {
       icon: BarChart3,
-      title: "Dashboards",
-      subtitle: "",
-      description: "Gerenciador das principais métricas do seu negócio",
+      title: "Sistemas de IA",
+      subtitle: "Para Eliminar Processos Manuais",
+      description: "Automações personalizadas que executam tarefas repetitivas e otimizam operações",
       features: [
-        "Tenha controle sobre os principais indicadores da sua empresa",
-        "Transforme dados em insights e insights em boas decisões",
-        "Acesse os dados a qualquer momento, em qualquer dispositivo"
+        "Automação de follow-ups e nutrição de leads",
+        "Processamento inteligente de dados e relatórios",
+        "Integração entre sistemas e plataformas"
       ]
     },
     {
       icon: DollarSign,
-      title: "Time de Vendas",
-      subtitle: "ISaaS",
-      description: "Nossos executivos de vendas trabalhando para você.",
+      title: "Integração Completa",
+      subtitle: "Para Unificar Operações",
+      description: "Conectamos todos os seus sistemas em uma operação única e automatizada",
       features: [
-        "Qualificamos as oportunidades e fechamos a venda para você",
-        "Executivos de vendas treinados semanalmente",
-        "Seu processo comercial sendo analisado e otimizado por nós"
+        "CRM integrado com automações inteligentes",
+        "Unificação de dados de vendas e marketing",
+        "Dashboard centralizado para controle total"
+      ]
+    },
+    {
+      icon: LifeBuoy,
+      title: "Agentes de Vendas 24/7",
+      subtitle: "Para Aumentar Receita",
+      description: "IA especializada em vendas que trabalha continuamente para aumentar sua receita",
+      features: [
+        "Prospecção automatizada e qualificada",
+        "Follow-up inteligente em múltiplos canais",
+        "Conversão otimizada com base em dados"
       ]
     }
   ];
@@ -140,19 +99,15 @@ export const Services = () => {
     <section id="servicos" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            A
-            <span className="bg-gradient-to-r from-pink-500 to-orange-400 bg-clip-text text-transparent">
-              {" "}Chave{" "}
-            </span>
-            estrutura o marketing da sua empresa
+          <h2 className="font-morganite text-4xl md:text-6xl font-bold mb-6">
+            Produtos de{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent">
+              IA
+            </span>{" "}
+            que Transformam Negócios
           </h2>
-          <h3 className="text-xl md:text-2xl font-bold mb-4">
-            com soluções feitas{" "}
-            <span className="text-pink-500">sob medida</span>
-          </h3>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Conheça todos os serviços que oferecemos para que sua empresa tenha mais resultados
+          <p className="font-sora text-xl text-muted-foreground max-w-3xl mx-auto">
+            Soluções inteligentes feitas sob medida para escalar sua operação
           </p>
         </div>
 
@@ -164,39 +119,29 @@ export const Services = () => {
             >
               {services.map((service, index) => (
                 <div key={index} className="w-full flex-shrink-0">
-                  <div className="bg-card border border-border rounded-3xl p-8 min-h-[500px] mx-4">
+                  <div className="bg-achave-dark-bg border border-achave-yellow/20 rounded-3xl p-8 min-h-[500px] mx-4">
                     <div className="mb-6">
-                      <div className="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center mb-4">
+                      <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-4">
                         <service.icon className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-3xl font-bold mb-2">{service.title}</h3>
+                      <h3 className="font-morganite text-3xl font-bold mb-2 text-white">{service.title}</h3>
                       {service.subtitle && (
-                        <p className="text-muted-foreground text-lg">{service.subtitle}</p>
+                        <p className="font-sora text-achave-yellow text-lg">{service.subtitle}</p>
                       )}
                     </div>
                     
-                    <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                    <p className="font-sora text-gray-300 text-lg mb-8 leading-relaxed">
                       {service.description}
                     </p>
                     
                     <div className="space-y-4">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-pink-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-muted-foreground">{feature}</span>
+                          <div className="w-2 h-2 bg-achave-yellow rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="font-sora text-gray-300">{feature}</span>
                         </div>
                       ))}
                     </div>
-
-                    {service.socialIcons && (
-                      <div className="mt-8 flex gap-4">
-                        {service.socialIcons.map((social, idx) => (
-                          <div key={idx} className={`w-12 h-12 rounded-xl ${social.className} flex items-center justify-center`}>
-                            <social.icon className="w-6 h-6 text-white" />
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -226,17 +171,25 @@ export const Services = () => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index === currentSlide ? 'bg-pink-500' : 'bg-gray-300'
+                    index === currentSlide ? 'bg-achave-yellow' : 'bg-gray-500'
                   }`}
                 />
               ))}
             </div>
           </div>
+          
+          {/* Descrição da empresa */}
+          <div className="max-w-4xl mx-auto mb-12 text-center">
+            <p className="font-sora text-lg text-muted-foreground leading-relaxed">
+              A A Chave é uma agência especializada em IA empresarial. Desenvolvemos agentes inteligentes, automações personalizadas e integrações estratégicas que eliminam trabalho manual e escalam operações. Nosso foco é criar soluções sob medida que reduzem custos, aumentam conversões e permitem crescimento acelerado sem expandir equipes.
+            </p>
+          </div>
+          
           <Button 
             onClick={scrollToForm}
-            className="bg-gradient-to-r from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-500 text-white px-8 py-6 text-lg"
+            className="bg-gradient-primary hover:opacity-90 text-white px-12 py-6 text-lg font-bold rounded-xl shadow-brand"
           >
-            Quero um marketing sob medida
+            Solicitar Consultoria
           </Button>
         </div>
       </div>
