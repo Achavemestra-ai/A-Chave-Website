@@ -1,60 +1,46 @@
+// path: src/components/Process.tsx
+import * as React from "react";
 
 export const Process = () => {
+  const steps = [
+    { num: 1, title: "Diagnóstico Rápido",  desc: "Consultoria com um especialista para mapear contexto, metas e gargalos. Sem burocracia, só o que importa." },
+    { num: 2, title: "Plano e Proposta",    desc: "Desenhamos a arquitetura, definimos escopo e cronograma. Você recebe um plano claro com custos e prazos." },
+    { num: 3, title: "Kickoff & Execução",  desc: "Apresentamos a equipe, alinhamos sprints e iniciamos a implementação. Você acompanha cada entrega." },
+  ];
+
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
-            Como Funciona
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="text-center">
-              <div 
-                className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                style={{
-                  background: 'linear-gradient(45deg, #f97316, #a855f7, #ec4899)',
-                  backgroundSize: '400% 400%',
-                  animation: 'gradientShift 8s ease-in-out infinite',
-                  boxShadow: '0 0 20px rgba(251, 191, 36, 0.66)'
-                }}
-              >
-                <span className="text-3xl font-bold text-white">1</span>
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h2 className="font-morganite text-4xl md:text-6xl font-bold mb-6">Como Funciona</h2>
+          <p className="font-sora text-xl text-muted-foreground max-w-3xl mx-auto">
+            Automação não precisa ser complexa. Guiamos tudo em{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent font-bold">3 passos claros</span>{" "}
+            para dar a você previsibilidade, velocidade e resultados.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {steps.map((s) => (
+            <div
+              key={s.num}
+              className="bg-card border border-border rounded-3xl p-8 text-center transition-all duration-300 hover:border-achave-yellow/50 hover:shadow-brand"
+            >
+              <div className="w-12 h-12 bg-gradient-secondary rounded-full mx-auto mb-6 ring-1 ring-white/10 flex items-center justify-center">
+                <span className="font-sora font-semibold text-white">{s.num}</span>
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Envie suas informações de contato. Todos os seus dados estarão seguros, 
-                vamos cuidar bem deles.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div 
-                className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                style={{
-                  background: 'linear-gradient(45deg, #f97316, #a855f7, #ec4899)',
-                  backgroundSize: '400% 400%',
-                  animation: 'gradientShift 8s ease-in-out infinite',
-                  boxShadow: '0 0 20px rgba(251, 191, 36, 0.66)'
-                }}
+              <h3 className="font-morganite text-2xl md:text-3xl font-bold text-white mb-3">{s.title}</h3>
+              <p className="font-sora text-muted-foreground leading-relaxed mb-6">{s.desc}</p>
+              <a
+                href="#lead-form"
+                className="inline-flex items-center justify-center rounded-full px-5 py-2 font-sora text-sm font-semibold text-white bg-gradient-primary hover:opacity-90 shadow-brand"
               >
-                <span className="text-3xl font-bold text-white">2</span>
-              </div>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                No mesmo dia um de nossos especialistas retornará o contato para 
-                agendar sua consultoria gratuita.
-              </p>
+                Fazer aplicação
+              </a>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </section>
   );
 };

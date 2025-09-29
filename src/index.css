@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* Definition of the A Chave design system with brand colors */
-
 @layer base {
   :root {
     /* A Chave Brand Colors - Following exact brand identity */
@@ -57,6 +56,13 @@
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ===== App background: carvão / chumbo escuro com degradê ===== */
+    --app-bg-0: 220 8% 6.5%;   /* topo: quase preto, levemente azulado */
+    --app-bg-1: 220 7% 7.5%;
+    --app-bg-2: 220 6% 9.5%;   /* meio */
+    --app-bg-3: 220 6% 10.5%;  /* base */
+    --app-bg-solid: hsl(var(--app-bg-0)); /* fallback */
   }
 }
 
@@ -71,13 +77,64 @@
 }
 
 /* ------------------------------
-   Ajustes globais para mobile
+   App background (gradiente global)
+   ------------------------------ */
+html, body {
+  background:
+    linear-gradient(
+      180deg,
+      hsl(var(--app-bg-0)) 0%,
+      hsl(var(--app-bg-1)) 28%,
+      hsl(var(--app-bg-2)) 62%,
+      hsl(var(--app-bg-3)) 100%
+    );
+  /* Evita jank em mobile; fixed costuma gaguejar */
+  background-attachment: scroll;
+  background-color: var(--app-bg-solid);
+}
+
+/* Garante que o degradê global apareça sem ser coberto por cores sólidas */
+body, #root {
+  background: transparent !important;
+}
+
+/* ------------------------------
+   SCROLL FIXES - Corrigido para o Header funcionar
    ------------------------------ */
 
-/* Evita “corte”/scroll horizontal */
-html, body, #root {
+/* Política de single scroller: apenas o body deve rolar */
+html {
+  height: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth; /* ✅ Importante para scroll suave */
+}
+
+body {
+  height: 100%;
+  max-width: 100%;
+  min-height: 100vh; /* ✅ Garante altura mínima */
+  overflow-x: hidden;
+  overflow-y: auto; /* ✅ Permite scroll vertical */
+  scrollbar-gutter: stable both-edges; /* evita "pulos" quando a barra aparece */
+}
+
+/* Root deve ter altura suficiente para permitir scroll */
+#root {
+  min-height: 100vh; /* ✅ Essencial para o scroll funcionar */
+  width: 100%;
+}
+
+/* Em navegadores modernos, corta qualquer 1px lateral sem ativar scroll-x */
+@supports (overflow: clip) {
+  html { overflow-x: clip; }
+  body { overflow-x: clip; }
+}
+
+/* Evita scrollers aninhados em wrappers de página/seções */
+main, section, [data-page], .page-wrapper {
+  overflow-y: visible;
+  overscroll-behavior: contain;
 }
 
 /* Congruência de box model */
@@ -98,4 +155,85 @@ a[role="button"] {
   text-align: center;
   line-height: 1.25;
   word-break: keep-all;
+}
+
+/* ------------------------------
+   Utilitários de superfície (vidro escuro sutil)
+   ------------------------------ */
+@layer utilities {
+  .surface {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: saturate(120%) blur(6px);
+  }
+  .surface-strong {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: saturate(120%) blur(8px);
+  }
+}
+
+/* ------------------------------
+   ✅ FIXES ESPECÍFICOS PARA HEADER SCROLL
+   ------------------------------ */
+
+/* Garante que eventos de scroll sejam detectados corretamente */
+html, body {
+  scroll-padding-top: 0;
+  scroll-snap-type: none; /* Remove qualquer snap que possa interferir */
+}
+
+/* Remove qualquer transformação que possa interferir na detecção de scroll */
+html, body, #root {
+  transform: none !important;
+  will-change: auto;
+}
+
+/* ✅ DEBUG: Classes para testar scroll - REMOVER DEPOIS */
+.test-scroll-height {
+  min-height: 300vh !important;
+  background: linear-gradient(
+    to bottom, 
+    transparent 0%, 
+    rgba(236,72,153,0.1) 30%,
+    rgba(168,85,247,0.1) 60%,
+    rgba(249,115,22,0.1) 100%
+  ) !important;
+}
+
+.test-scroll-content {
+  padding: 50vh 0;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* ✅ Força recálculo de layout quando necessário */
+.force-layout-recalc {
+  transform: translateZ(0);
+}
+
+/* ✅ Otimizações de performance para scroll */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS */
+}
+
+/* ✅ Remove qualquer interferência de CSS customizado */
+body[style*="overflow"],
+#root[style*="overflow"] {
+  overflow: visible !important;
+}
+
+/* ✅ Garante que containers principais tenham altura */
+main {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ✅ Fix para Vite/React Router */
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
