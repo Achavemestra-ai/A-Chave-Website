@@ -1,14 +1,16 @@
-// src/components/DiagramaChaveMestra.tsx
 import React from "react";
 
 const DiagramaChaveMestra = () => {
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section
+      id="diagrama"
+      className="py-16 md:py-20 bg-background scroll-mt-28 md:scroll-mt-32"
+    >
       <div className="container mx-auto px-4">
         {/* TÍTULO */}
         <h2
           className="font-morganite inline-flex items-baseline gap-3
-                     whitespace-nowrap w-full justify-center text-center
+                     whitespace-normal sm:whitespace-nowrap w-full justify-center text-center
                      leading-[0.96] font-bold
                      text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem]
                      mb-8 md:mb-12"
@@ -130,33 +132,21 @@ const DiagramaChaveMestra = () => {
 
                 <rect x="320" y="166" width="160" height="50" rx="25" fill="hsl(var(--background))" stroke="#FF8A3C" strokeWidth="2" />
                 <text x="400" y="190" textAnchor="middle" className="fill-foreground" style={{ fontSize: "13px", fontWeight: 600 }}>
-                  <tspan x="400" dy="0">
-                    Inteligência
-                  </tspan>
-                  <tspan x="400" dy="14">
-                    Artificial
-                  </tspan>
+                  <tspan x="400" dy="0">Inteligência</tspan>
+                  <tspan x="400" dy="14">Artificial</tspan>
                 </text>
 
                 <rect x="520" y="166" width="160" height="50" rx="25" fill="hsl(var(--background))" stroke="#FF8A3C" strokeWidth="2" />
                 <text x="600" y="190" textAnchor="middle" className="fill-foreground" style={{ fontSize: "13px", fontWeight: 600 }}>
-                  <tspan x="600" dy="0">
-                    Automação de
-                  </tspan>
-                  <tspan x="600" dy="14">
-                    Processos
-                  </tspan>
+                  <tspan x="600" dy="0">Automação de</tspan>
+                  <tspan x="600" dy="14">Processos</tspan>
                 </text>
 
                 {/* Subpílulas — CIÊNCIA SOCIAL */}
                 <rect x="120" y="380" width="160" height="50" rx="25" fill="hsl(var(--background))" stroke="#FF8A3C" strokeWidth="2" />
                 <text x="200" y="400" textAnchor="middle" className="fill-foreground" style={{ fontSize: "12px", fontWeight: 600 }}>
-                  <tspan x="200" dy="0">
-                    Estudo de Micro e
-                  </tspan>
-                  <tspan x="200" dy="14">
-                    Média Sociedades
-                  </tspan>
+                  <tspan x="200" dy="0">Estudo de Micro e</tspan>
+                  <tspan x="200" dy="14">Média Sociedades</tspan>
                 </text>
 
                 <rect x="320" y="380" width="160" height="50" rx="25" fill="hsl(var(--background))" stroke="#FF8A3C" strokeWidth="2" />
@@ -183,7 +173,7 @@ const DiagramaChaveMestra = () => {
             </div>
           </div>
 
-          {/* COLUNA DIREITA — VÍDEO + BOTÃO + SETA */}
+          {/* COLUNA DIREITA — VÍDEO + BOTÃO */}
           <div className="flex flex-col items-center xl:items-start">
             <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_30px_-12px_rgba(236,72,153,0.35)]">
               <iframe
@@ -197,33 +187,23 @@ const DiagramaChaveMestra = () => {
               />
             </div>
 
-            {/* seta embaixo do vídeo */}
-            <div className="mt-6 mb-3 animate-bounce">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <path d="M12 4v14M6 12l6 6 6-6" stroke="url(#g)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <defs>
-                  <linearGradient id="g" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#f97316" />
-                    <stop offset="1" stopColor="#ec4899" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
+            {/* BOTÃO: Assista completo */}
             <a
-              href="https://www.youtube.com/watch?v=jTAmvpDkfCU"
+              href="https://www.youtube.com/watch?v=kLu3q0O44Cw"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white
-                         shadow-lg hover:shadow-pink-500/30 transition-all duration-300 hover:scale-[1.02]"
+              className="mt-10 sm:mt-12 mx-auto block w-max select-none
+                         rounded-full px-6 py-3 text-sm font-semibold text-white
+                         shadow-lg hover:shadow-pink-500/30 transition-all duration-300
+                         hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2
+                         focus-visible:ring-pink-400/60"
               style={{
                 background: "linear-gradient(45deg,#f97316,#a855f7,#ec4899)",
                 backgroundSize: "180% 180%",
                 animation: "achaveGradient 10s ease infinite",
               }}
             >
-              Assista ao vídeo completo
-              <span className="inline-block -mr-1">↗</span>
+              Assista completo
             </a>
           </div>
         </div>
