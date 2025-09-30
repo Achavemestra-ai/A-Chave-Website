@@ -18,7 +18,6 @@ export const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // leva para a seção de soluções (AIAgencySection)
   const scrollToSolucoes = () => {
     const el = document.getElementById("solucoes");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -39,7 +38,7 @@ export const Hero = () => {
         `,
       }}
     >
-      {/* Grid de fundo */}
+      {/* Grid */}
       <div className="absolute inset-0 opacity-30">
         <div
           className="absolute inset-0 bg-grid-pattern"
@@ -107,7 +106,7 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Triângulo central + anéis */}
+      {/* Triângulo + anéis */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="relative">
           <div
@@ -179,10 +178,9 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Conteúdo principal */}
+      {/* Conteúdo */}
       <div className="container mx-auto px-4 py-24 md:py-32 relative z-20">
         <div className="max-w-6xl mx-auto text-center">
-          {/* Título principal */}
           <div
             className={`transform transition-all duration-2000 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
@@ -216,7 +214,6 @@ export const Hero = () => {
             </h1>
           </div>
 
-          {/* Ícones neon */}
           <div
             className={`mt-20 transform transition-all duration-2000 delay-500 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
@@ -310,19 +307,12 @@ export const Hero = () => {
               ))}
             </div>
 
-            {/* Parágrafo — mantém! */}
+            {/* NOVO TEXTO */}
             <p className="font-sora text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
-              Chegou o momento de virar{" "}
-              <span
-                className="font-bold"
-                style={{ color: "#ec4899", textShadow: "0 0 10px #ec4899" }}
-              >
-                A Chave
-              </span>{" "}
-              da sua empresa para novos horizontes.
+              Para empresas que faturam mais de{" "}
+              <span className="neon-money">R$ 20 Mil/mês</span>.
             </p>
 
-            {/* CTA */}
             <Button
               onClick={scrollToSolucoes}
               className="
@@ -343,9 +333,7 @@ export const Hero = () => {
                 textShadow: "0 0 10px #ec4899",
               }}
             >
-              <span className="relative z-10 tracking-wider">
-                QUERO MAIS INFORMAÇÕES
-              </span>
+              <span className="relative z-10 tracking-wider">QUERO MAIS INFORMAÇÕES</span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {[...Array(6)].map((_, i) => (
@@ -383,6 +371,37 @@ export const Hero = () => {
         @keyframes textFlicker {
           0%,100%{ text-shadow:0 0 5px #ec4899,0 0 10px #ec4899,0 0 15px #ec4899; }
           50%{ text-shadow:0 0 3px #ec4899,0 0 8px #ec4899,0 0 12px #ec4899; }
+        }
+
+        /* NEON MAIS FORTE (meio-termo alto) */
+        .neon-money{
+          display:inline-block;
+          color:#f472b6;                /* pink-400 */
+          font-weight:800;
+          -webkit-text-stroke:0.35px rgba(255,255,255,.24);
+          text-shadow:
+            0 0 4px  rgba(236,72,153,.92),
+            0 0 10px rgba(236,72,153,.75),
+            0 0 20px rgba(236,72,153,.55),
+            0 0 28px rgba(236,72,153,.40);
+          filter: drop-shadow(0 0 6px rgba(236,72,153,.35));
+          animation: moneyFlicker 3.6s ease-in-out infinite alternate;
+        }
+        @keyframes moneyFlicker{
+          0%{
+            text-shadow:
+              0 0 3px  rgba(236,72,153,.88),
+              0 0 8px  rgba(236,72,153,.70),
+              0 0 16px rgba(236,72,153,.50),
+              0 0 24px rgba(236,72,153,.36);
+          }
+          100%{
+            text-shadow:
+              0 0 5px  rgba(236,72,153,.98),
+              0 0 12px rgba(236,72,153,.82),
+              0 0 22px rgba(236,72,153,.62),
+              0 0 32px rgba(236,72,153,.46);
+          }
         }
       `}</style>
     </section>

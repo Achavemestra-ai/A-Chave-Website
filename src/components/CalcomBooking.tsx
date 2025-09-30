@@ -8,14 +8,15 @@ type FormState = {
   email: string;
   whatsapp: string;
   instagram: string;
-  faturamento: string;   // Investimento mensal em marketing
+  faturamento: string;   // Investimento mensal em inovação
   modelo: string;
-  tempoDigital: string;
+  tempoDigital: string;  // Tempo de empresa
   objetivo: string;
   dificuldade: string;
 };
 
 const CHECKOUT_URL = "https://www.asaas.com/c/dxd7c09hom84pgxa";
+const WHATSAPP_NUMBER_E164 = "5527992859103"; // +55 27 99285-9103
 type Step = 0 | 1;
 
 export const CalcomBooking = () => {
@@ -55,31 +56,50 @@ export const CalcomBooking = () => {
     return !!base && confirmaMinimo;
   }, [data, confirmaMinimo]);
 
-  const handleNext = () => {
-    if (validStep0) setStep(1);
-  };
+  const handleNext = () => { if (validStep0) setStep(1); };
   const handleBack = () => setStep(0);
 
-  // Somente abre uma NOVA ABA e mantém o site; sem redirecionamento da aba atual.
+  function buildWhatsappMessage(d: FormState) {
+    return [
+      "Olá! Vim através do site e acabei de enviar minha aplicação.",
+      "",
+      "Meus dados:",
+      `• Nome: ${d.nome}`,
+      `• E-mail: ${d.email}`,
+      `• Whatsapp: ${d.whatsapp}`,
+      `• Instagram: ${d.instagram}`,
+      `• Investimento mensal em inovação: ${d.faturamento || "—"}`,
+      `• Modelo de negócio: ${d.modelo || "—"}`,
+      `• Tempo de empresa: ${d.tempoDigital || "—"}`,
+      `• Objetivo principal: ${d.objetivo || "—"}`,
+      `• Maior dificuldade: ${d.dificuldade || "—"}`,
+      "",
+      "Podemos avançar?"
+    ].join("\n");
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validStep1) return;
 
     setLoading(true);
-    setSent("ok"); // mostra a tela de impacto imediatamente
+    setSent("ok");
 
-    // tenta abrir em nova guia. Se bloquear, o usuário usa o botão da tela de obrigado.
+    // tenta abrir as duas abas a partir do mesmo clique (pode ser bloqueado em alguns navegadores)
     try {
       window.open(CHECKOUT_URL, "_blank", "noopener,noreferrer");
-    } catch {
-      /* ignorar */
-    }
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(buildWhatsappMessage(data))}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    } catch {}
 
-    // encerra loading para reabilitar botões/UX
-    setTimeout(() => setLoading(false), 300);
+    setTimeout(() => setLoading(false), 200);
   };
 
   const progress = step === 0 ? 50 : 100;
+
+  const waDeepLink = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(
+    "Olá! Finalizei a aplicação e vou enviar o comprovante do checkout."
+  )}`;
 
   return (
     <>
@@ -131,9 +151,8 @@ export const CalcomBooking = () => {
                 Aplicação recebida — bem-vindo ao próximo nível.
               </h3>
               <p className="mx-auto max-w-xl text-neutral-600">
-                <strong>Em até 60 dias</strong>, nosso objetivo é te mostrar gráficos subindo e loja mais
-                cheia — sem brigar por preço. Abrimos o <strong>checkout</strong> em uma nova aba. Se não
-                abriu, use o botão abaixo.
+                <strong>Finalize o pagamento no checkout</strong> e, em seguida,{" "}
+                <strong>encaminhe o comprovante pelo WhatsApp</strong> para agilizar a validação da sua aplicação.
               </p>
 
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -151,14 +170,17 @@ export const CalcomBooking = () => {
                   Ir para o checkout
                 </a>
                 <a
-                  href="#inicio"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  href={waDeepLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:shadow-pink-500/30"
+                  style={{
+                    background: "linear-gradient(45deg,#22c55e,#06b6d4,#8b5cf6)",
+                    backgroundSize: "180% 180%",
+                    animation: "achaveGradient 10s ease infinite",
                   }}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-neutral-700 ring-1 ring-neutral-300 hover:bg-neutral-50"
                 >
-                  Voltar ao início
+                  Enviar comprovante no WhatsApp
                 </a>
               </div>
 
@@ -169,16 +191,15 @@ export const CalcomBooking = () => {
                   <li><b>Instagram:</b> {data.instagram}</li>
                   <li><b>E-mail:</b> {data.email}</li>
                   <li><b>Whatsapp:</b> {data.whatsapp}</li>
-                  <li><b>Invest. marketing:</b> {data.faturamento}</li>
+                  <li><b>Invest. inovação:</b> {data.faturamento}</li>
                   <li><b>Modelo:</b> {data.modelo}</li>
-                  <li><b>Tempo no digital:</b> {data.tempoDigital}</li>
+                  <li><b>Tempo de empresa:</b> {data.tempoDigital}</li>
                   <li className="sm:col-span-2"><b>Objetivo:</b> {data.objetivo || "—"}</li>
                   <li className="sm:col-span-2"><b>Dificuldade:</b> {data.dificuldade || "—"}</li>
                 </ul>
               </div>
             </motion.div>
           ) : (
-            // formulário (dois passos)
             <FormUI
               step={step}
               progress={progress}
@@ -275,8 +296,12 @@ function FormUI({
             <p className="text-[13px] font-medium text-neutral-800">Antes de prosseguir:</p>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-[13px] text-neutral-700">
               <li>Investimento mínimo para implementar o framework: <strong>R$ 5.000</strong>.</li>
-              <li>Garantia de resultado: até <strong>2 meses</strong> (ou devolvemos 100%).</li>
-              <li>A consultoria tem <strong>custo</strong>; ao enviar, você será <strong>direcionado ao checkout</strong> (em nova aba).</li>
+              <li>
+                Garantia de resultado: até <strong>2 meses</strong> (ou devolvemos 100% <strong>mediante a contrato</strong>).
+              </li>
+              <li>
+                A consultoria tem <strong>custo de R$ 333,33</strong>; ao enviar, você será <strong>direcionado ao checkout</strong> (em nova aba).
+              </li>
             </ul>
           </div>
 
@@ -294,7 +319,7 @@ function FormUI({
               <Fieldset title="Negócio">
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <Select
-                    label="Investimento mensal em marketing*"
+                    label="Investimento mensal em inovação*"
                     name="faturamento"
                     value={data.faturamento}
                     onChange={handleChange}
@@ -318,7 +343,7 @@ function FormUI({
                     ]}
                   />
                   <Select
-                    label="Tempo no digital*"
+                    label="Tempo de empresa*"
                     name="tempoDigital"
                     value={data.tempoDigital}
                     onChange={handleChange}
@@ -415,12 +440,12 @@ function FormUI({
             <ul className="space-y-2 text-sm">
               <li className="flex justify-between gap-3"><span className="text-white/70">Nome</span><span className="font-medium">{data.nome || "—"}</span></li>
               <li className="flex justify-between gap-3"><span className="text-white/70">Instagram</span><span className="font-medium">{data.instagram || "—"}</span></li>
-              <li className="flex justify-between gap-3"><span className="text-white/70">Invest. Marketing</span><span className="font-medium">{data.faturamento || "—"}</span></li>
+              <li className="flex justify-between gap-3"><span className="text-white/70">Invest. Inovação</span><span className="font-medium">{data.faturamento || "—"}</span></li>
               <li className="flex justify-between gap-3"><span className="text-white/70">Modelo</span><span className="font-medium">{data.modelo || "—"}</span></li>
             </ul>
 
             <p className="mt-4 text-xs text-white/75">
-              * Garantia: resultado em até 2 meses ou devolvemos 100%.
+              * Garantia: resultado em até 2 meses (ou devolvemos 100% mediante a contrato).
             </p>
           </div>
         </div>

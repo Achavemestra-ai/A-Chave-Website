@@ -126,6 +126,7 @@ export function Header() {
           role="navigation"
         >
           <div className={["flex items-center justify-between px-4 sm:px-5 md:px-6", padY].join(" ")}>
+            {/* Brand */}
             <button
               className="flex items-center gap-3 select-none cursor-pointer transition-all duration-300"
               onClick={() => scrollTo("inicio")}
@@ -166,6 +167,7 @@ export function Header() {
               </span>
             </button>
 
+            {/* Nav */}
             <nav
               className={[
                 "hidden lg:flex items-center space-x-6 transition-all duration-500",
@@ -189,6 +191,7 @@ export function Header() {
               ))}
             </nav>
 
+            {/* Search + CTA */}
             <div
               className={[
                 "hidden lg:flex items-center gap-4 transition-all duration-500",
@@ -196,11 +199,11 @@ export function Header() {
               ].join(" ")}
             >
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 w-4 h-4 pointer-events-none" />
                 <input
                   type="text"
                   placeholder="Buscar..."
-                  className="bg-white/10 text-white/90 placeholder:text-white/60 border border-white/15 rounded-lg pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300 w-40"
+                  className="header-search w-40 rounded-lg pl-10 pr-4 py-1.5 text-sm text-white/90 placeholder:text-white/60 outline-none transition-all duration-300"
                 />
               </div>
 
@@ -217,6 +220,7 @@ export function Header() {
               </Button>
             </div>
 
+            {/* Menu mobile */}
             <button
               aria-label="Abrir menu"
               onClick={() => setIsMenuOpen((v) => !v)}
@@ -233,6 +237,7 @@ export function Header() {
         </header>
       </div>
 
+      {/* Mini pill recolhido */}
       <div
         className={[
           "fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 z-30 transition-all duration-300",
@@ -259,6 +264,7 @@ export function Header() {
         </button>
       </div>
 
+      {/* Drawer mobile */}
       <div
         className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
@@ -274,7 +280,7 @@ export function Header() {
               <input
                 type="text"
                 placeholder="Buscar..."
-                className="w-full bg-input border border-border rounded-lg pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
+                className="header-search w-full rounded-lg pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300"
               />
             </div>
 
@@ -315,6 +321,29 @@ export function Header() {
           0% { background-position: 0% 50% }
           50% { background-position: 100% 50% }
           100% { background-position: 0% 50% }
+        }
+
+        /* Aparência do campo de busca do header (força translúcido) */
+        .header-search {
+          background: rgba(0,0,0,.22) !important;
+          border: 1px solid rgba(255,255,255,.12) !important;
+          color: rgba(255,255,255,.92) !important;
+          caret-color: #fff;
+          backdrop-filter: blur(6px);
+        }
+        .header-search::placeholder { color: rgba(255,255,255,.65); }
+        .header-search:hover { background: rgba(0,0,0,.28) !important; }
+        .header-search:focus {
+          background: rgba(0,0,0,.30) !important;
+          box-shadow: 0 0 0 2px rgba(236,72,153,.35);
+          border-color: transparent !important;
+        }
+
+        /* Corrige o autofill do Chrome que forçava branco */
+        input.header-search:-webkit-autofill {
+          -webkit-text-fill-color: #fff !important;
+          box-shadow: 0 0 0px 1000px rgba(0,0,0,.22) inset !important;
+          transition: background-color 9999s ease-in-out 0s;
         }
       `}</style>
     </>
