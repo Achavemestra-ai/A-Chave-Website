@@ -31,7 +31,7 @@ export const ProjectsSection: React.FC = () => {
   const [active, setActive] = React.useState(false);
   const [hoverTriangle, setHoverTriangle] = React.useState(false);
 
-  // Detecta ambiente touch / mobile para garantir animação sem hover
+  // Detecta ambiente touch / mobile
   const [isTouch, setIsTouch] = React.useState(false);
   React.useEffect(() => {
     if (typeof window !== "undefined" && "matchMedia" in window) {
@@ -39,13 +39,7 @@ export const ProjectsSection: React.FC = () => {
     }
   }, []);
 
-  // Em telas touch, ativa estados por padrão
-  React.useEffect(() => {
-    if (isTouch) {
-      setActive(true);
-      setHoverTriangle(true);
-    }
-  }, [isTouch]);
+  // ⚠️ Removido o "auto-ativar" no mobile para não travar os cards do triângulo.
 
   return (
     <section className="relative py-20 md:py-28 overflow-hidden bg-transparent">
@@ -67,7 +61,9 @@ export const ProjectsSection: React.FC = () => {
           {/* ESQUERDA */}
           <div className="relative rounded-[28px] border border-white/10 surface p-6 md:p-8">
             <div
-              className="relative aspect-[4/3] w-full"
+              className="relative aspect-[4/3] w-full cursor-pointer"
+              role="button"
+              aria-label="Mostrar etapas"
               onMouseEnter={() => setHoverTriangle(true)}
               onMouseLeave={() => setHoverTriangle(false)}
               onTouchStart={() => setHoverTriangle((v) => !v)}
@@ -119,8 +115,8 @@ export const ProjectsSection: React.FC = () => {
                       style={pos}
                       className="absolute"
                       initial={false}
-                      animate={(hoverTriangle || isTouch) ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 6, scale: 0.98 }}
-                      transition={{ type: "spring", stiffness: 220, damping: 18, delay: (hoverTriangle || isTouch) ? i * 0.12 + 0.05 : 0 }}
+                      animate={hoverTriangle ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 6, scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 220, damping: 18, delay: hoverTriangle ? i * 0.12 + 0.05 : 0 }}
                     >
                       <div className="select-none rounded-full bg-white/6 px-3 py-1.5 text-xs font-medium text-white/90 ring-1 ring-white/10 backdrop-blur">
                         {p}
@@ -136,8 +132,8 @@ export const ProjectsSection: React.FC = () => {
           <div className="relative rounded-[28px] border border-white/10 surface p-6 md:p-8">
             <div className="relative aspect-[4/3] w-full">
               <div className="absolute inset-0 rounded-3xl ring-1 ring-white/10" />
-              <CenterLogo active={active || isTouch} />
-              {nodeLogos.map((n, idx) => (<Node key={idx} {...n} active={active || isTouch} />))}
+              <CenterLogo active={active} />
+              {nodeLogos.map((n, idx) => (<Node key={idx} {...n} active={active} />))}
               <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                 <defs>
                   <filter id="glow">
@@ -145,12 +141,12 @@ export const ProjectsSection: React.FC = () => {
                     <feMerge><feMergeNode in="coloredBlur" /><feMergeNode in="SourceGraphic" /></feMerge>
                   </filter>
                 </defs>
-                <AnimatedLine d="M18 62 H82" active={active || isTouch} delay={0.05} />
-                <AnimatedLine d="M32 36 H68" active={active || isTouch} delay={0.10} />
-                <AnimatedLine d="M32 36 V60" active={active || isTouch} delay={0.15} />
-                <AnimatedLine d="M68 36 V60" active={active || isTouch} delay={0.20} />
-                <AnimatedLine d="M32 60 H68" active={active || isTouch} delay={0.25} />
-                <AnimatedLine d="M50 22 V74" active={active || isTouch} delay={0.30} />
+                <AnimatedLine d="M18 62 H82" active={active} delay={0.05} />
+                <AnimatedLine d="M32 36 H68" active={active} delay={0.10} />
+                <AnimatedLine d="M32 36 V60" active={active} delay={0.15} />
+                <AnimatedLine d="M68 36 V60" active={active} delay={0.20} />
+                <AnimatedLine d="M32 60 H68" active={active} delay={0.25} />
+                <AnimatedLine d="M50 22 V74" active={active} delay={0.30} />
               </svg>
 
               <div className="absolute left-1/2 top-[85%] -translate-x-1/2">
@@ -163,11 +159,11 @@ export const ProjectsSection: React.FC = () => {
                   className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-white/85 shadow-inner backdrop-blur transition"
                 >
                   <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
-                    <Key className={`h-4 w-4 transition ${active || isTouch ? "text-achave-yellow" : "text-white"}`} />
+                    <Key className={`h-4 w-4 transition ${active ? "text-achave-yellow" : "text-white"}`} />
                   </span>
                   <span className="font-sora text-sm">A Chave</span>
-                  <span className={`pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-achave-yellow/20 px-2 py-0.5 text-xs text-white/95 ring-1 ring-achave-yellow/30 opacity-0 translate-y-1 transition ${(active || isTouch) ? "opacity-100 translate-y-0" : ""}`}>A Chave</span>
-                  <span className={`absolute -inset-1 rounded-full blur transition ${(active || isTouch) ? "bg-achave-yellow/30" : "bg-transparent"}`} aria-hidden="true" />
+                  <span className={`pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-achave-yellow/20 px-2 py-0.5 text-xs text-white/95 ring-1 ring-achave-yellow/30 opacity-0 translate-y-1 transition ${active ? "opacity-100 translate-y-0" : ""}`}>A Chave</span>
+                  <span className={`absolute -inset-1 rounded-full blur transition ${active ? "bg-achave-yellow/30" : "bg-transparent"}`} aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -176,11 +172,6 @@ export const ProjectsSection: React.FC = () => {
       </div>
 
       <style>{`
-        @keyframes dash { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
-        :root { --ps-dash-speed: 1.1s; }
-        @media (max-width: 640px) {
-          :root { --ps-dash-speed: 0.8s; }
-        }
         @media (prefers-reduced-motion: reduce) {
           #achave-g animateTransform { display: none; }
         }
@@ -228,21 +219,58 @@ function CenterLogo({ active }: { active: boolean }) {
   );
 }
 
-function AnimatedLine({ d, active, delay = 0 }: { d: string; active: boolean; delay?: number; }) {
+/* -------- Linha animada (dash proporcional, mobile-safe) -------- */
+function AnimatedLine({
+  d,
+  active,
+  delay = 0,
+}: {
+  d: string;
+  active: boolean;
+  delay?: number;
+}) {
+  const ref = React.useRef<SVGPathElement | null>(null);
+  const [len, setLen] = React.useState(0);
+
+  React.useEffect(() => {
+    if (ref.current) {
+      try {
+        setLen(ref.current.getTotalLength() || 0);
+      } catch {
+        setLen(300); // fallback
+      }
+    }
+  }, []);
+
+  // dash/gap proporcionais ao comprimento da linha
+  const dash = React.useMemo(() => {
+    const v = len > 0 ? len / 18 : 4;
+    return Math.max(3, Math.min(8, v));
+  }, [len]);
+
+  const gap = React.useMemo(() => dash * 1.4, [dash]);
+
   return (
-    <path
+    <motion.path
+      ref={ref}
       d={d}
       fill="none"
       stroke="currentColor"
       className="text-achave-yellow"
-      strokeWidth={0.9}
-      strokeDasharray="2 3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      style={{
-        opacity: 1,
+      strokeWidth={1}
+      strokeLinecap="butt"
+      strokeLinejoin="miter"
+      vectorEffect="non-scaling-stroke"
+      strokeDasharray={`${dash} ${gap}`}
+      initial={{ strokeDashoffset: len, filter: "none", opacity: 1 }}
+      animate={{
+        strokeDashoffset: active ? 0 : len,
         filter: active ? "url(#glow)" : "none",
-        animation: active ? `dash var(--ps-dash-speed) ${delay}s ease-out forwards` : "none"
+      }}
+      transition={{
+        delay,
+        duration: Math.min(Math.max(len / 220, 0.6), 1.2),
+        ease: "easeOut",
       }}
     />
   );
