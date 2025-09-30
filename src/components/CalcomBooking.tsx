@@ -59,6 +59,7 @@ export const CalcomBooking = () => {
   const handleNext = () => { if (validStep0) setStep(1); };
   const handleBack = () => setStep(0);
 
+  /** Mensagem completa para o WhatsApp, com quebra de linha legível */
   function buildWhatsappMessage(d: FormState) {
     return [
       "Olá! Vim através do site e acabei de enviar minha aplicação.",
@@ -78,6 +79,17 @@ export const CalcomBooking = () => {
     ].join("\n");
   }
 
+  /** Abre URL em nova aba usando âncora (melhor taxa de sucesso contra popup blockers) */
+  function openInNewTab(url: string) {
+    const a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validStep1) return;
@@ -85,20 +97,28 @@ export const CalcomBooking = () => {
     setLoading(true);
     setSent("ok");
 
-    // tenta abrir as duas abas a partir do mesmo clique (pode ser bloqueado em alguns navegadores)
+    // monta o link do Whats com os dados do lead
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(
+      buildWhatsappMessage(data)
+    )}`;
+
+    // abre checkout e WhatsApp em novas abas a partir do mesmo clique
     try {
-      window.open(CHECKOUT_URL, "_blank", "noopener,noreferrer");
-      const waUrl = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(buildWhatsappMessage(data))}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
-    } catch {}
+      openInNewTab(CHECKOUT_URL);
+      // pequeno atraso ajuda alguns navegadores a não bloquear o 2º open
+      setTimeout(() => openInNewTab(waUrl), 80);
+    } catch {
+      /* ignore */
+    }
 
     setTimeout(() => setLoading(false), 200);
   };
 
   const progress = step === 0 ? 50 : 100;
 
+  // Botão da tela de obrigado também usa a mensagem completa
   const waDeepLink = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(
-    "Olá! Finalizei a aplicação e vou enviar o comprovante do checkout."
+    buildWhatsappMessage(data)
   )}`;
 
   return (
